@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D AI Scanner Optimization System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Animated Gradient Background -->
+    <div class="gradient-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🔬</span>
+                <span class="logo-text">3D AI</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#Features">Features</a></li>
+                <li><a href="#Pipeline">Pipeline</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" id="typingTitle">3D AI Scanner Optimization System</h1>
+            <p class="hero-subtitle">Advanced Machine Learning-Based Optimization of 3D Scanning Parameters</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card glass">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Models Processed</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-number">99.8%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-number">50ms</div>
+                    <div class="stat-label">Avg Processing</div>
+                </div>
+            </div>
+
+            <a href="#upload" class="cta-button">
+                <span class="button-text">Start Scanning</span>
+                <span class="button-icon">→</span>
+            </a>
+        </div>
+        <div class="hero-glow"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title fade-in-element">Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card glass fade-in-element">
+                <div class="feature-icon">📤</div>
+                <h3>Smart Upload</h3>
+                <p>Upload STL, PLY, and OBJ files with drag-and-drop support</p>
+            </div>
+            <div class="feature-card glass fade-in-element">
+                <div class="feature-icon">☁️</div>
+                <h3>Point Cloud</h3>
+                <p>Generate and visualize detailed point clouds from 3D models</p>
+            </div>
+            <div class="feature-card glass fade-in-element">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Optimization</h3>
+                <p>Machine learning algorithms for parameter optimization</p>
+            </div>
+            <div class="feature-card glass fade-in-element">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Processing</h3>
+                <p>Lightning-fast processing with advanced algorithms</p>
+            </div>
+            <div class="feature-card glass fade-in-element">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics</h3>
+                <p>Detailed reports and metrics for every scan</p>
+            </div>
+            <div class="feature-card glass fade-in-element">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure</h3>
+                <p>Bank-level encryption for your 3D models</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Processing Pipeline Section -->
+    <section class="pipeline" id="pipeline">
+        <h2 class="section-title fade-in-element">3D Processing & Optimization Pipeline</h2>
+        <div class="pipeline-tree glass fade-in-element">
+            <div class="pipeline-block preprocessing">
+                <div class="pipeline-block-title">3D Data Preprocessing</div>
+                <div class="pipeline-items">
+                    <div class="pipeline-item">
+                        <span class="item-icon">📊</span>
+                        <span class="item-name">Point Cloud Density Analysis</span>
+                    </div>
+                    <div class="pipeline-item">
+                        <span class="item-icon">🔵</span>
+                        <span class="item-name">DBSCAN Clustering</span>
+                    </div>
+                    <div class="pipeline-item">
+                        <span class="item-icon">🧊</span>
+                        <span class="item-name">Voxel Grid Downsampling</span>
+                    </div>
+                    <div class="pipeline-item">
+                        <span class="item-icon">📐</span>
+                        <span class="item-name">Poisson Surface Reconstruction</span>
+                    </div>
+                    <div class="pipeline-item">
+                        <span class="item-icon">✈️</span>
+                        <span class="item-name">RANSAC Plane Segmentation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pipeline-arrow-down">▼</div>
+            <div class="pipeline-block noiseremoval">
+                <div class="pipeline-block-title">Noise Removal / Cancellation</div>
+                <div class="pipeline-items">
+                    <div class="pipeline-item">
+                        <span class="item-icon">📉</span>
+                        <span class="item-name">Statistical Outlier Removal</span>
+                    </div>
+                    <div class="pipeline-item">
+                        <span class="item-icon">⭕</span>
+                        <span class="item-name">Radius Outlier Removal</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pipeline-arrow-down">▼</div>
+            <div class="pipeline-block optimization">
+                <div class="pipeline-block-title">ML Optimization</div>
+                <div class="pipeline-items">
+                    <div class="pipeline-item">
+                        <span class="item-icon">⚡</span>
+                        <span class="item-name">Parameter Optimization</span>
+                    </div>
+                    <div class="pipeline-item">
+                        <span class="item-icon">✅</span>
+                        <span class="item-name">Optimized Result</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="upload-content">
+            <h2 class="section-title fade-in-element">Upload Your 3D Model</h2>
+            
+            <div class="upload-container glass fade-in-element">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">📤</div>
+                    <h3>Drag and Drop Your File</h3>
+                    <p>or click to browse</p>
+                    <p class="upload-formats">Supported: STL, PLY, OBJ (Max 50MB)</p>
+                    <input type="file" id="fileInput" accept=".stl,.ply,.obj" style="display:none;">
+                </div>
+
+                <div class="upload-progress hidden" id="uploadProgress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="uploadStatus">Uploading...</p>
+                </div>
+
+                <div class="upload-success hidden" id="uploadSuccess">
+                    <div class="success-icon">✓</div>
+                    <h3>Upload Successful!</h3>
+                    <p id="successMessage">Your file has been uploaded</p>
+                    <a href="#upload" class="success-button">Upload Another File</a>
+                </div>
+            </div>
+
+            <button class="upload-button" id="uploadButton">Upload Now</button>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="tech-stack fade-in-element">
+        <h2 class="section-title">Technologies</h2>
+        <div class="tech-grid">
+            <div class="tech-item glass">
+                <div class="tech-logo">🐍</div>
+                <h4>Python</h4>
+            </div>
+            <div class="tech-item glass">
+                <div class="tech-logo">⚡</div>
+                <h4>Flask</h4>
+            </div>
+            <div class="tech-item glass">
+                <div class="tech-logo">🖼️</div>
+                <h4>OpenCV</h4>
+            </div>
+            <div class="tech-item glass">
+                <div class="tech-logo">🧠</div>
+                <h4>TensorFlow</h4>
+            </div>
+            <div class="tech-item glass">
+                <div class="tech-logo">📊</div>
+                <h4>NumPy</h4>
+            </div>
+            <div class="tech-item glass">
+                <div class="tech-logo">🎨</div>
+                <h4>Three.js</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uploaded Files Section -->
+    <section class="files-section" id="files">
+        <h2 class="section-title fade-in-element">📚 Uploaded Files</h2>
+        <div class="files-container glass fade-in-element" id="filesContainer">
+            <div class="file-list" id="fileList">
+                <div class="no-files">No files uploaded yet. Upload a file to get started!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>3D AI Scanner</h4>
+                <p>Machine Learning-Based Optimization System</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pipeline">Pipeline</a></li>
+                    <li><a href="#upload">Upload</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@3dscanner.ai">Email Us</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 3D AI Scanner Optimization System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Message Container for custom notifications -->
+    <div class="message-container" id="messageContainer"></div>
+
+    <script src="{{ url_for('static', filename='landing.js') }}"></script>
+    <script>
+    // ============================================
+    // File Upload Management for Landing Page
+    // ============================================
+    
+    // Upload Button
+    document.getElementById('uploadButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('fileInput').click();
+    });
+
+    // File input change
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+        if (e.target.files.length > 0) {
+            const file = e.target.files[0];
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (!['stl', 'ply', 'obj'].includes(ext)) {
+                alert('Invalid file type. Please upload STL, PLY, or OBJ file.');
+                return;
+            }
+            if (file.size > 50 * 1024 * 1024) {
+                alert('File size exceeds 50MB limit.');
+                return;
+            }
+            uploadFile(file);
+        }
+    });
+
+    async function uploadFile(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const uploadBox = document.getElementById('uploadBox');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const uploadSuccess = document.getElementById('uploadSuccess');
+        const progressFill = document.getElementById('progressFill');
+        const uploadStatus = document.getElementById('uploadStatus');
+
+        uploadBox.classList.add('hidden');
+        uploadProgress.classList.remove('hidden');
+        uploadSuccess.classList.add('hidden');
+
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 30;
+            if (progress > 90) progress = 90;
+            progressFill.style.width = progress + '%';
+        }, 200);
+
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            clearInterval(progressInterval);
+            progressFill.style.width = '100%';
+
+            if (data.status === 'success') {
+                uploadStatus.textContent = 'Upload complete!';
+                setTimeout(() => {
+                    uploadProgress.classList.add('hidden');
+                    uploadSuccess.classList.remove('hidden');
+                    document.getElementById('successMessage').textContent = file.name + ' uploaded successfully!';
+                    refreshFileList();
+                    showToastMessage('✅ File uploaded successfully!', 3000);
+                }, 500);
+            } else {
+                throw new Error(data.message);
+            }
+        } catch (error) {
+            clearInterval(progressInterval);
+            uploadBox.classList.remove('hidden');
+            uploadProgress.classList.add('hidden');
+            showToastMessage('❌ Upload failed: ' + error.message, 4000);
+        }
+    }
+
+    async function refreshFileList() {
+        try {
+            const response = await fetch('/list-uploads');
+            const data = await response.json();
+            const fileList = document.getElementById('fileList');
+
+            if (!data.files || data.files.length === 0) {
+                fileList.innerHTML = '<div class="no-files">No files uploaded yet. Upload a file to get started!</div>';
+                return;
+            }
+
+            fileList.innerHTML = data.files.map(function(file) {
+                return '<div class="file-item">' +
+                    '<div class="file-info">' +
+                        '<div class="file-name">' + escapeHtml(file.name) + '</div>' +
+                        '<div class="file-size">' + formatFileSize(file.size) + '</div>' +
+                    '</div>' +
+                    '<div class="file-actions">' +
+                        '<button class="btn-optimize btn-small" onclick="optimizeFile(\'' + escapeHtml(file.name) + '\')">⚡ Optimize</button>' +
+                        '<button class="btn-download btn-small" onclick="downloadFile(\'' + escapeHtml(file.name) + '\')">⬇️ Download</button>' +
+                        '<button class="btn-delete btn-small" onclick="deleteFile(\'' + escapeHtml(file.name) + '\')">🗑️ Delete</button>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    async function optimizeFile(filename) {
+        showToastMessage('⚡ Starting optimization for ' + filename + '...', 2000);
+        try {
+            const response = await fetch('/optimize', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filename: filename })
+            });
+            const data = await response.json();
+            if (data.status === 'success') {
+                showToastMessage('✅ Optimization complete for ' + filename + '!', 4000);
+            } else {
+                showToastMessage('❌ ' + data.message, 4000);
+            }
+        } catch (error) {
+            showToastMessage('❌ Error: ' + error.message, 4000);
+        }
+    }
+
+    async function deleteFile(filename) {
+        if (!confirm('Are you sure you want to delete ' + filename + '?')) return;
+        try {
+            const response = await fetch('/delete-upload', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filename: filename })
+            });
+            const data = await response.json();
+            if (data.status === 'success') {
+                showToastMessage('✅ ' + filename + ' deleted!', 3000);
+                refreshFileList();
+            }
+        } catch (error) {
+            showToastMessage('❌ Error: ' + error.message, 4000);
+        }
+    }
+
+    function downloadFile(filename) {
+        const link = document.createElement('a');
+        link.href = '/uploads/' + encodeURIComponent(filename);
+        link.download = filename;
+        link.click();
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 B';
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function showToastMessage(message, duration) {
+        const container = document.getElementById('messageContainer');
+        const messageEl = document.createElement('div');
+        messageEl.className = 'toast-message';
+        messageEl.textContent = message;
+        container.appendChild(messageEl);
+        setTimeout(function() {
+            messageEl.classList.add('hide');
+            setTimeout(function() { messageEl.remove(); }, 300);
+        }, duration || 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        refreshFileList();
+    });
+    </script>
+    <style>
+    /* File Management Styles */
+    .files-section {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .files-container {
+        padding: 30px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .file-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .file-item:hover {
+        background: rgba(255,255,255,0.1);
+        transform: translateX(5px);
+        border-left-color: #00f2fe;
+    }
+    .file-info { flex: 1; }
+    .file-name { font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .file-size { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .file-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-small {
+        padding: 6px 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    .btn-optimize { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+    .btn-optimize:hover { transform: scale(1.1); box-shadow: 0 4px 15px rgba(118,75,162,0.5); }
+    .btn-download { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+    .btn-download:hover { transform: scale(1.1); box-shadow: 0 4px 15px rgba(16,185,129,0.5); }
+    .btn-delete { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+    .btn-delete:hover { transform: scale(1.1); box-shadow: 0 4px 15px rgba(239,68,68,0.5); }
+    .no-files { text-align: center; padding: 30px; color: rgba(255,255,255,0.5); }
+    .message-container {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .toast-message {
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        animation: slideInRight 0.4s ease-out;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .toast-message.hide {
+        animation: fadeOutRight 0.3s ease-out forwards;
+    }
+    @keyframes fadeOutRight {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(50px); }
+    }
+    /* Pipeline Tree Styles */
+    .pipeline-tree {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .pipeline-block {
+        width: 100%;
+        background: rgba(255,255,255,0.05);
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: all 0.3s ease;
+    }
+    .pipeline-block:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+        border-color: rgba(102,126,234,0.4);
+    }
+    .pipeline-block.preprocessing { border-left: 4px solid #667eea; }
+    .pipeline-block.noiseremoval { border-left: 4px solid #f093fb; }
+    .pipeline-block.optimization { border-left: 4px solid #00f2fe; }
+    .pipeline-block-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .pipeline-items {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .pipeline-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.03);
+        transition: all 0.2s ease;
+    }
+    .pipeline-item:hover {
+        background: rgba(255,255,255,0.08);
+        transform: translateX(5px);
+    }
+    .item-icon { font-size: 1.1rem; }
+    .item-name { font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .pipeline-arrow-down {
+        font-size: 1.5rem;
+        color: rgba(102,126,234,0.6);
+        animation: float 2s ease-in-out infinite;
+    }
+    /* Optimization Result Panel */
+    .optimization-result {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 16px;
+        background: rgba(16,185,129,0.1);
+        border: 2px solid rgba(16,185,129,0.3);
+        display: none;
+    }
+    .optimization-result.show {
+        display: block;
+        animation: fadeInUp 0.5s ease-out;
+    }
+    .optimization-result h3 {
+        color: #10b981;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
+    .optimization-result .result-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+    .optimization-result .result-item {
+        background: rgba(0,0,0,0.2);
+        padding: 12px;
+        border-radius: 8px;
+    }
+    .optimization-result .result-label {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: 4px;
+    }
+    .optimization-result .result-value {
+        font-size: 1rem;
+        color: #fff;
+        font-weight: 600;
+    }
+    .upload-button {
+        margin-top: 20px;
+        padding: 14px 40px;
+        background: linear-gradient(135deg, #667eea, #00f2fe);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(102,126,234,0.4);
+    }
+    .upload-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(102,126,234,0.6);
+    }
+    @media (max-width: 768px) {
+        .file-item { flex-direction: column; align-items: flex-start; }
+        .file-actions { width: 100%; justify-content: flex-start; }
+    }
+    </style>
+</body>
+</html>

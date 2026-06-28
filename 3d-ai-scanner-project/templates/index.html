@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D AI Scanner Optimization System - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>3D AI Scanner Optimization System</h1>
+            <p>Upload and analyze 3D models for machine learning-based optimization of scanning parameters</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">📁</div>
+                        <h3>Multiple Formats</h3>
+                        <p>Support for STL and PLY files</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚙️</div>
+                        <h3>ML Optimization</h3>
+                        <p>Parameter optimization algorithms</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analysis Tools</h3>
+                        <p>3D processing & visualization</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Performance</h3>
+                        <p>Fast and efficient processing</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section" id="upload">
+                <h2>📤 Upload 3D Models</h2>
+                <div class="upload-container">
+                    <!-- Drag & Drop -->
+                    <div class="drag-drop" id="dragDrop">
+                        <div class="drag-drop-icon">📂</div>
+                        <p><strong>Drag and drop your files here</strong></p>
+                        <p class="drag-drop-hint">or click to browse</p>
+                        <input type="file" id="fileInput" multiple accept=".stl,.ply">
+                    </div>
+
+                    <!-- Supported Formats Info -->
+                    <div style="display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Supported Formats</h3>
+                            <ul style="list-style: none; color: var(--text-secondary);">
+                                <li style="margin-bottom: 0.5rem;">✓ <strong>STL Files</strong> - Stereolithography (ASCII & Binary)</li>
+                                <li style="margin-bottom: 0.5rem;">✓ <strong>PLY Files</strong> - Polygon File Format</li>
+                                <li style="margin-bottom: 0.5rem;">📊 Maximum file size: <strong>50 MB</strong></li>
+                                <li>⚡ Real-time processing available</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Quick Start</h3>
+                            <ol style="list-style: none; color: var(--text-secondary);">
+                                <li style="margin-bottom: 0.5rem;">1. Upload your 3D model file</li>
+                                <li style="margin-bottom: 0.5rem;">2. View file details</li>
+                                <li style="margin-bottom: 0.5rem;">3. Run ML analysis</li>
+                                <li>4. Optimize parameters</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- File List Section -->
+            <section class="files-section" id="files">
+                <h2>📚 Uploaded Files</h2>
+                <div id="fileList" class="file-list">
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--text-secondary);">
+                        <p>No files uploaded yet. Upload a file to get started!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Processing Results Section -->
+            <section class="results-section" id="results">
+                <h2>📊 3D Processing Results</h2>
+                <p>Machine Learning Analysis & Optimization Results</p>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab(event, 'overview')">Overview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'analysis')">Analysis</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'optimization')">Optimization</button>
+                </div>
+
+                <!-- Overview Tab -->
+                <div id="overview" class="tab-content active">
+                    <div class="placeholder-content">
+                        <div class="result-item">
+                            <div class="result-icon">📈</div>
+                            <h3>Model Statistics</h3>
+                            <p>Vertex count, face count, and mesh quality metrics will be displayed here</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">🎯</div>
+                            <h3>Quality Assessment</h3>
+                            <p>Automated quality checks and validation reports</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">💾</div>
+                            <h3>File Information</h3>
+                            <p>Size, format, and metadata information</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Tab -->
+                <div id="analysis" class="tab-content">
+                    <div class="placeholder-content">
+                        <div class="result-item">
+                            <div class="result-icon">🔍</div>
+                            <h3>Geometric Analysis</h3>
+                            <p>Surface normal analysis, curvature detection, and feature extraction using Open3D</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">🧠</div>
+                            <h3>ML-Based Classification</h3>
+                            <p>Machine learning models for model classification and complexity assessment</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">📐</div>
+                            <h3>Scanning Parameters</h3>
+                            <p>Recommended scanning parameters based on model characteristics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Optimization Tab -->
+                <div id="optimization" class="tab-content">
+                    <div class="placeholder-content">
+                        <div class="result-item">
+                            <div class="result-icon">⚙️</div>
+                            <h3>Parameter Optimization</h3>
+                            <p>ML-optimized scanning parameters for maximum quality and efficiency</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">📊</div>
+                            <h3>Performance Metrics</h3>
+                            <p>Quality scores, processing time estimates, and resource requirements</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-icon">✅</div>
+                            <h3>Recommendations</h3>
+                            <p>Actionable suggestions for optimal 3D scanning setup</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructions Section -->
+            <section class="results-section" id="about">
+                <h2>ℹ️ Project Information</h2>
+                <p><strong>Machine Learning-Based Optimization of 3D Scanning Parameters</strong></p>
+                
+                <div style="max-width: 800px; margin: 2rem auto; text-align: left; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h3 style="color: var(--accent-color); margin-bottom: 1rem;">How to Run Locally</h3>
+                    
+                    <ol style="color: var(--text-secondary); line-height: 2;">
+                        <li><strong>Clone or download the project</strong></li>
+                        <li><strong>Install dependencies:</strong>
+                            <pre style="background: var(--card-bg); padding: 1rem; margin: 0.5rem 0; border-radius: 4px; color: var(--accent-color); overflow-x: auto;">pip install -r requirements.txt</pre>
+                        </li>
+                        <li><strong>Run the Flask application:</strong>
+                            <pre style="background: var(--card-bg); padding: 1rem; margin: 0.5rem 0; border-radius: 4px; color: var(--accent-color); overflow-x: auto;">python app.py</pre>
+                        </li>
+                        <li><strong>Open your browser:</strong>
+                            <pre style="background: var(--card-bg); padding: 1rem; margin: 0.5rem 0; border-radius: 4px; color: var(--accent-color); overflow-x: auto;">http://localhost:5000</pre>
+                        </li>
+                    </ol>
+
+                    <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Project Structure</h3>
+                    <pre style="background: var(--card-bg); padding: 1rem; border-radius: 4px; color: var(--text-secondary); overflow-x: auto; font-size: 0.85rem;">project/
+├── app.py                 # Flask application
+├── scanner.py             # Scanner module
+├── requirements.txt       # Python dependencies
+├── uploads/              # Uploaded files
+├── scanned_images/       # Scanned image storage
+├── templates/
+│   └── index.html        # Main page
+└── static/
+    └── style.css         # Styling</pre>
+
+                    <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Technologies Used</h3>
+                    <ul style="color: var(--text-secondary);">
+                        <li><strong>Backend:</strong> Python Flask</li>
+                        <li><strong>3D Processing:</strong> Open3D (planned), NumPy, SciPy</li>
+                        <li><strong>Machine Learning:</strong> Scikit-learn, TensorFlow (planned)</li>
+                        <li><strong>Image Processing:</strong> OpenCV</li>
+                        <li><strong>Frontend:</strong> HTML5, CSS3, Vanilla JavaScript</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Message Container -->
+        <div class="message-container" id="messageContainer"></div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p><strong>3D AI Scanner Optimization System</strong></p>
+                <p style="font-size: 0.9rem;">B.Tech Project - Machine Learning-Based Optimization of 3D Scanning Parameters</p>
+                <div class="footer-links">
+                    <a href="#upload">Upload</a>
+                    <a href="#files">Files</a>
+                    <a href="#results">Results</a>
+                    <a href="#about">About</a>
+                </div>
+                <p style="margin-top: 1.5rem; color: #666; font-size: 0.85rem;">© 2026 3D AI Scanner System. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ============================================
+        // Drag & Drop Handling
+        // ============================================
+        const dragDrop = document.getElementById('dragDrop');
+        const fileInput = document.getElementById('fileInput');
+
+        dragDrop.addEventListener('click', () => fileInput.click());
+
+        dragDrop.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragDrop.classList.add('dragover');
+        });
+
+        dragDrop.addEventListener('dragleave', () => {
+            dragDrop.classList.remove('dragover');
+        });
+
+        dragDrop.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragDrop.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // ============================================
+        // File Handling
+        // ============================================
+        async function handleFiles(files) {
+            for (let file of files) {
+                // Validate file type
+                if (!file.name.endsWith('.stl') && !file.name.endsWith('.ply')) {
+                    showMessage('Only .stl and .ply files are supported', 'error');
+                    continue;
+                }
+
+                // Validate file size (50 MB max)
+                if (file.size > 50 * 1024 * 1024) {
+                    showMessage(`File ${file.name} is too large (max 50 MB)`, 'error');
+                    continue;
+                }
+
+                await uploadFile(file);
+            }
+        }
+
+        async function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showMessage(`✓ ${file.name} uploaded successfully!`, 'success');
+                    refreshFileList();
+                } else {
+                    showMessage(`Error uploading ${file.name}: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`Error uploading ${file.name}: ${error.message}`, 'error');
+            }
+        }
+
+        // ============================================
+        // File List Management
+        // ============================================
+        async function refreshFileList() {
+            try {
+                const response = await fetch('/list-uploads');
+                const data = await response.json();
+
+                const fileList = document.getElementById('fileList');
+                
+                if (!data.files || data.files.length === 0) {
+                    fileList.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--text-secondary);"><p>No files uploaded yet. Upload a file to get started!</p></div>';
+                    return;
+                }
+
+                fileList.innerHTML = data.files.map(file => `
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-name">${escapeHtml(file.name)}</div>
+                            <div class="file-size">${formatFileSize(file.size)}</div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-optimize btn-small" onclick="optimizeFile('${escapeHtml(file.name)}')" title="Optimize">⚡ Optimize</button>
+                            <button class="btn-download btn-small" onclick="downloadFile('${escapeHtml(file.name)}')" title="Download">⬇️ Download</button>
+                            <button class="btn-delete btn-small" onclick="deleteFile('${escapeHtml(file.name)}')" title="Delete">🗑️ Delete</button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error refreshing file list:', error);
+            }
+        }
+
+        async function optimizeFile(filename) {
+            showMessage(`⚡ Starting optimization for ${filename}...`, 'info');
+            
+            try {
+                const response = await fetch('/optimize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename })
+                });
+
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    showMessage(`✓ Optimization complete for ${filename}!`, 'success');
+                    // Switch to optimization tab to show results
+                    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    document.querySelector('.tab-btn:nth-child(3)').classList.add('active');
+                    document.getElementById('optimization').classList.add('active');
+                } else {
+                    showMessage(`Optimization failed: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`Error optimizing file: ${error.message}`, 'error');
+            }
+        }
+
+        async function deleteFile(filename) {
+            if (!confirm(`Are you sure you want to delete ${filename}?`)) return;
+
+            try {
+                const response = await fetch('/delete-upload', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename })
+                });
+
+                const data = await response.json();
+                if (data.status === 'success') {
+                    showMessage(`✓ ${filename} deleted successfully!`, 'success');
+                    refreshFileList();
+                } else {
+                    showMessage(`Error deleting file: ${data.message}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`Error deleting file: ${error.message}`, 'error');
+            }
+        }
+
+        function downloadFile(filename) {
+            const link = document.createElement('a');
+            link.href = `/uploads/${filename}`;
+            link.download = filename;
+            link.click();
+        }
+
+        // ============================================
+        // Utility Functions
+        // ============================================
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showMessage(message, type = 'info') {
+            const container = document.getElementById('messageContainer');
+            const messageEl = document.createElement('div');
+            messageEl.className = `message ${type}`;
+            messageEl.textContent = message;
+
+            container.appendChild(messageEl);
+
+            setTimeout(() => {
+                messageEl.classList.add('hide');
+                setTimeout(() => messageEl.remove(), 300);
+            }, 4000);
+        }
+
+        function switchTab(event, tabName) {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding content
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // ============================================
+        // Initialize
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            refreshFileList();
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D AI Scanner - Advanced Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-container">
+        <div class="particles"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-cube"></i>
+                <span>3D AI Scanner</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+                <li><a href="#models" class="nav-link">Models</a></li>
+                <li><a href="#analytics" class="nav-link">Analytics</a></li>
+                <li><a href="#settings" class="nav-link">Settings</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-notification" id="notifBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="profile-menu">
+                    <img src="https://i.pravatar.cc/40?u=user" alt="Profile" class="profile-img">
+                    <div class="dropdown">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="menu-item active"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#" class="menu-item"><i class="fas fa-cloud-upload-alt"></i> Upload Model</a></li>
+                <li><a href="#" class="menu-item"><i class="fas fa-history"></i> Recent Scans</a></li>
+                <li><a href="#" class="menu-item"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="#" class="menu-item"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Header -->
+            <div class="content-header">
+                <div class="header-title">
+                    <h1>3D AI Scanner Optimization</h1>
+                    <p>Advanced holographic scanning and ML-based optimization</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="scanBtn">
+                        <i class="fas fa-video"></i> Start Scan
+                    </button>
+                    <button class="btn btn-secondary" id="uploadBtn">
+                        <i class="fas fa-upload"></i> Upload Model
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero 3D Viewer Section -->
+            <section class="hero-viewer glass-card">
+                <div class="viewer-container">
+                    <div class="hologram-viewer" id="holoViewer">
+                        <div class="hologram-content">
+                            <div class="hologram-model">
+                                <canvas id="modelCanvas"></canvas>
+                                <div class="hologram-overlay">
+                                    <div class="scan-progress">
+                                        <div class="progress-ring"></div>
+                                        <span>Initializing Scan...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viewer-controls">
+                            <button class="control-btn" title="Rotate">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                            <button class="control-btn" title="Zoom">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                            <button class="control-btn" title="Reset">
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="viewer-info">
+                        <div class="info-card">
+                            <i class="fas fa-layer-group"></i>
+                            <div>
+                                <p class="label">Point Cloud Density</p>
+                                <p class="value">2.5M Points</p>
+                                <div class="mini-bar"><div class="fill" style="width: 85%"></div></div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-chart-pie"></i>
+                            <div>
+                                <p class="label">Accuracy Score</p>
+                                <p class="value">98.7%</p>
+                                <div class="mini-bar"><div class="fill" style="width: 98.7%"></div></div>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <p class="label">Processing Speed</p>
+                                <p class="value">45 FPS</p>
+                                <div class="mini-bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card glass-card gradient-border-1">
+                    <div class="stat-icon"><i class="fas fa-cube"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Models Processed</p>
+                        <p class="stat-value">1,248</p>
+                        <p class="stat-trend"><i class="fas fa-arrow-up"></i> 12% this week</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card gradient-border-2">
+                    <div class="stat-icon"><i class="fas fa-database"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Point Clouds</p>
+                        <p class="stat-value">45.2K</p>
+                        <p class="stat-trend"><i class="fas fa-arrow-up"></i> 8% increase</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card gradient-border-3">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Success Rate</p>
+                        <p class="stat-value">99.2%</p>
+                        <p class="stat-trend"><i class="fas fa-arrow-up"></i> Excellent</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card gradient-border-4">
+                    <div class="stat-icon"><i class="fas fa-zap"></i></div>
+                    <div class="stat-content">
+                        <p class="stat-label">Avg Processing Time</p>
+                        <p class="stat-value">2.3s</p>
+                        <p class="stat-trend"><i class="fas fa-arrow-down"></i> 15% faster</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div class="analytics-section">
+                <div class="analytics-row">
+                    <!-- Scan Activity Chart -->
+                    <div class="chart-card glass-card">
+                        <div class="chart-header">
+                            <h3>Scan Activity (Last 7 Days)</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active">7D</button>
+                                <button class="chart-btn">30D</button>
+                                <button class="chart-btn">1Y</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Quality Distribution -->
+                    <div class="chart-card glass-card">
+                        <div class="chart-header">
+                            <h3>Quality Distribution</h3>
+                        </div>
+                        <div class="quality-bars">
+                            <div class="quality-item">
+                                <div class="quality-label">Excellent</div>
+                                <div class="quality-bar">
+                                    <div class="quality-fill" style="width: 75%; background: linear-gradient(90deg, #00ff88, #00ffcc);"></div>
+                                </div>
+                                <span>75%</span>
+                            </div>
+                            <div class="quality-item">
+                                <div class="quality-label">Good</div>
+                                <div class="quality-bar">
+                                    <div class="quality-fill" style="width: 18%; background: linear-gradient(90deg, #00ccff, #0099ff);"></div>
+                                </div>
+                                <span>18%</span>
+                            </div>
+                            <div class="quality-item">
+                                <div class="quality-label">Fair</div>
+                                <div class="quality-bar">
+                                    <div class="quality-fill" style="width: 5%; background: linear-gradient(90deg, #ff00ff, #cc00ff);"></div>
+                                </div>
+                                <span>5%</span>
+                            </div>
+                            <div class="quality-item">
+                                <div class="quality-label">Poor</div>
+                                <div class="quality-bar">
+                                    <div class="quality-fill" style="width: 2%; background: linear-gradient(90deg, #ff0000, #ff3333);"></div>
+                                </div>
+                                <span>2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload & Processing -->
+                <div class="upload-section glass-card">
+                    <div class="upload-header">
+                        <h3>Upload & Process 3D Models</h3>
+                        <p>Drag and drop or click to upload STL, PLY, OBJ files (Max 50MB)</p>
+                    </div>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag models here or click to browse</p>
+                        <input type="file" id="fileInput" multiple accept=".stl,.ply,.obj" hidden>
+                    </div>
+                    <div class="upload-files" id="uploadFiles">
+                        <!-- Files will be added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optimization Dashboard -->
+            <section class="optimization-section">
+                <h2 class="section-title">AI Optimization Dashboard</h2>
+                <div class="optimization-grid">
+                    <div class="opt-card glass-card">
+                        <div class="opt-header">
+                            <h4>Resolution Optimization</h4>
+                            <span class="opt-badge opt-success">Active</span>
+                        </div>
+                        <div class="opt-content">
+                            <p class="opt-metric">Recommended: 2048x2048</p>
+                            <div class="opt-bar">
+                                <div class="opt-fill" style="width: 85%"></div>
+                            </div>
+                            <p class="opt-status">85% optimized</p>
+                        </div>
+                    </div>
+                    <div class="opt-card glass-card">
+                        <div class="opt-header">
+                            <h4>Noise Reduction</h4>
+                            <span class="opt-badge opt-success">Optimized</span>
+                        </div>
+                        <div class="opt-content">
+                            <p class="opt-metric">Filter Level: Medium</p>
+                            <div class="opt-bar">
+                                <div class="opt-fill" style="width: 92%"></div>
+                            </div>
+                            <p class="opt-status">92% effective</p>
+                        </div>
+                    </div>
+                    <div class="opt-card glass-card">
+                        <div class="opt-header">
+                            <h4>Feature Detection</h4>
+                            <span class="opt-badge opt-processing">Processing</span>
+                        </div>
+                        <div class="opt-content">
+                            <p class="opt-metric">Features Found: 1,245</p>
+                            <div class="opt-bar">
+                                <div class="opt-fill" style="width: 68%"></div>
+                            </div>
+                            <p class="opt-status">68% detected</p>
+                        </div>
+                    </div>
+                    <div class="opt-card glass-card">
+                        <div class="opt-header">
+                            <h4>ML Prediction</h4>
+                            <span class="opt-badge opt-pending">Pending</span>
+                        </div>
+                        <div class="opt-content">
+                            <p class="opt-metric">Confidence: 94.5%</p>
+                            <div class="opt-bar">
+                                <div class="opt-fill" style="width: 94.5%"></div>
+                            </div>
+                            <p class="opt-status">Waiting for input</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Models -->
+            <section class="recent-models">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Scans</h2>
+                    <a href="#" class="view-all">View All →</a>
+                </div>
+                <div class="models-grid">
+                    <div class="model-card glass-card">
+                        <div class="model-image">
+                            <div class="model-thumbnail">📦</div>
+                            <span class="model-type">STL</span>
+                        </div>
+                        <div class="model-info">
+                            <h4>Engine Block</h4>
+                            <p class="model-size">45.2 MB</p>
+                            <div class="model-stats">
+                                <span><i class="fas fa-layer-group"></i> 2.5M</span>
+                                <span><i class="fas fa-check"></i> 99.2%</span>
+                            </div>
+                        </div>
+                        <div class="model-actions">
+                            <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                            <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="model-card glass-card">
+                        <div class="model-image">
+                            <div class="model-thumbnail">📦</div>
+                            <span class="model-type">PLY</span>
+                        </div>
+                        <div class="model-info">
+                            <h4>Gear System</h4>
+                            <p class="model-size">32.8 MB</p>
+                            <div class="model-stats">
+                                <span><i class="fas fa-layer-group"></i> 1.8M</span>
+                                <span><i class="fas fa-check"></i> 98.5%</span>
+                            </div>
+                        </div>
+                        <div class="model-actions">
+                            <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                            <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="model-card glass-card">
+                        <div class="model-image">
+                            <div class="model-thumbnail">📦</div>
+                            <span class="model-type">OBJ</span>
+                        </div>
+                        <div class="model-info">
+                            <h4>Bracket Assembly</h4>
+                            <p class="model-size">18.5 MB</p>
+                            <div class="model-stats">
+                                <span><i class="fas fa-layer-group"></i> 1.2M</span>
+                                <span><i class="fas fa-check"></i> 97.8%</span>
+                            </div>
+                        </div>
+                        <div class="model-actions">
+                            <button class="icon-btn" title="View"><i class="fas fa-eye"></i></button>
+                            <button class="icon-btn" title="Download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2>Upload 3D Model</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-dropzone" id="dropzone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your file here</p>
+                    <input type="file" id="modalFileInput" accept=".stl,.ply,.obj" hidden>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                <button class="btn btn-primary" id="submitBtn">Upload</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Center -->
+    <div class="notification-center" id="notificationCenter">
+        <div class="notification glass-card" style="background: rgba(0, 255, 136, 0.1); border-left: 3px solid #00ff88;">
+            <i class="fas fa-check-circle" style="color: #00ff88;"></i>
+            <div>
+                <p class="notif-title">Scan Completed</p>
+                <p class="notif-text">Engine Block scan finished with 99.2% accuracy</p>
+            </div>
+            <span class="notif-time">2m ago</span>
+        </div>
+        <div class="notification glass-card" style="background: rgba(0, 204, 255, 0.1); border-left: 3px solid #00ccff;">
+            <i class="fas fa-info-circle" style="color: #00ccff;"></i>
+            <div>
+                <p class="notif-title">Analysis Ready</p>
+                <p class="notif-text">Point cloud density analysis is ready for review</p>
+            </div>
+            <span class="notif-time">15m ago</span>
+        </div>
+        <div class="notification glass-card" style="background: rgba(255, 0, 255, 0.1); border-left: 3px solid #ff00ff;">
+            <i class="fas fa-star" style="color: #ff00ff;"></i>
+            <div>
+                <p class="notif-title">Optimization Suggested</p>
+                <p class="notif-text">ML model suggests resolution improvement</p>
+            </div>
+            <span class="notif-time">1h ago</span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
